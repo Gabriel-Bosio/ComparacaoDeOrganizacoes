@@ -12,7 +12,7 @@ struct organizacao {
 
     double ciclosCPU = 0, nI = 0, cpi = 0;
 
-    double tExeceucao, desempenho;
+    double tExecucao, desempenho;
 };
 
 double clocksOp(organizacao& org, string tipo) {
@@ -59,9 +59,9 @@ void buscarInstrucoes(organizacao& org) {
 
     org.cpi = org.ciclosCPU / org.nI;
 
-    org.tExeceucao = org.ciclosCPU * org.tClock;
+    org.tExecucao = org.ciclosCPU * org.tClock;
 
-    org.desempenho = 1 / org.tExeceucao;
+    org.desempenho = 1 / org.tExecucao;
 }
 
 organizacao requirirOrganizacao() {
@@ -117,7 +117,7 @@ void realizarComparacao(organizacao org1, organizacao org2) {
 
     cout << "\n\nCPI medio: " << org1.cpi;
 
-    cout << "\n\nTempo de excucao: " << org1.tExeceucao << " nanosegundos";
+    cout << "\n\nTempo de excucao: " << org1.tExecucao << " nanosegundos";
 
     cout << "\n\nDesempenho: " << org1.desempenho;
 
@@ -132,7 +132,7 @@ void realizarComparacao(organizacao org1, organizacao org2) {
 
     cout << "\n\nCPI medio: " << org2.cpi;
 
-    cout << "\n\nTempo de excucao: " <<  org2.tExeceucao << " nanosegundos";
+    cout << "\n\nTempo de excucao: " <<  org2.tExecucao << " nanosegundos";
 
     cout << "\n\nDesempenho: " << org2.desempenho;
 
@@ -164,6 +164,8 @@ int main()
     organizacao org2 = requirirOrganizacao();
 
     realizarComparacao(org1, org2);
+
+    cout << endl << endl << endl;
 
     return 0;
 }
