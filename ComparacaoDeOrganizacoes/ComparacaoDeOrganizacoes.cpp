@@ -8,7 +8,7 @@ struct organizacao {
 
     string descricao;
 
-    double tClock, cIL = 5, cR = 4, cIA = 4, cS = 4, cB = 3, cJ = 3, cU = 2;
+    double tClock, cIL, cR, cIA, cS, cB, cJ, cU;
 
     double ciclosCPU = 0, nI = 0, cpi = 0;
 
