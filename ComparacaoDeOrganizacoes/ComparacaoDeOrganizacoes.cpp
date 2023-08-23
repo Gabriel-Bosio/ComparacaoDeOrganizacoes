@@ -74,7 +74,6 @@ organizacao requirirOrganizacao() {
     double nano;
 
     cout << "\n\nDigite o nome da nova organizacao: ";
-    cin.ignore();
     getline(cin, org.descricao);
 
     cout << "\n\nDigite o tempo de clock em nanosegundos: ";
@@ -113,7 +112,7 @@ void realizarComparacao(organizacao org1, organizacao org2) {
 
     cout << "||Comparacao de desempenho baseado no codigo lido||";
 
-    cout << "\n\n---" << org1.descricao << "---";
+    cout << "\n\n--- " << org1.descricao << " ---";
 
     cout << "\n\nTempo de clock: " << org1.tClock << " nanosegundos";
 
@@ -128,7 +127,7 @@ void realizarComparacao(organizacao org1, organizacao org2) {
 
 
 
-    cout << "\n\n\n\n---" << org2.descricao << "---";
+    cout << "\n\n\n\n--- " << org2.descricao << " ---";
 
     cout << "\n\nTempo de clock: " << org2.tClock << " nanosegundos";
 
@@ -163,6 +162,8 @@ int main()
 
     cout << "\n\n|Organizacao 1| ";
     organizacao org1 = requirirOrganizacao();
+
+    cin.ignore();
 
     cout << "\n\n|Organizacao 2| ";
     organizacao org2 = requirirOrganizacao();
