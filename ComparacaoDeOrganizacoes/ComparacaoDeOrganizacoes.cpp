@@ -1,3 +1,7 @@
+// Trabalho feito por:
+// - Gabriel Bosio
+// - Eduardo da Rocha Weber
+
 #include <iostream>
 #include <fstream>
 #include <string>
