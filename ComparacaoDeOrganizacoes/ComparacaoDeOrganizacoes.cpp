@@ -8,16 +8,48 @@
 
 using namespace std;
 
-struct organizacao {
-
-    string descricao;
-
-    double tClock, cIL, cR, cIA, cS, cB, cJ, cU;
-
-    double ciclosCPU = 0, nI = 0, cpi = 0;
-
-    double tExecucao, desempenho;
+struct no {
+    string instrucao;
+    no* anterior;
+    no* posterior;
 };
+
+struct lista {
+    no* inicio;
+    no* fim;
+};
+
+void inicializar(lista& instrucoes) {
+    instrucoes.inicio = NULL;
+    instrucoes.fim = NULL;
+}
+
+void inserirFinal(lista& instrucoes, string instrucao) {
+
+    no* novo = new no;
+    novo->instrucao = instrucao;
+    novo->anterior = NULL;
+    novo->posterior = NULL;
+
+
+    if (instrucoes.inicio == NULL) {
+        instrucoes.inicio = novo;
+    }
+    else {
+        instrucoes.fim->posterior = novo;
+        novo->anterior = instrucoes.fim;
+        instrucoes.fim = novo;
+    }
+}
+
+void inserirNop(no* instrucao) {
+    no* novo = new no;
+    novo->instrucao = "00000000000000000000000000010011";
+    novo->anterior = instrucao->anterior;
+    novo->posterior = instrucao;
+    instrucao->anterior = novo;
+}
+
 
 double clocksOp(organizacao& org, string tipo) {
 
@@ -45,6 +77,10 @@ double clocksOp(organizacao& org, string tipo) {
     return 0;
 }
 
+double verificarHazard(ifstream codigo) {
+}
+
+
 void buscarInstrucoes(organizacao& org) {
 
     ifstream codigo;
@@ -55,7 +91,7 @@ void buscarInstrucoes(organizacao& org) {
 
     while (getline(codigo, instrucao)) {
 
-        org.ciclosCPU += clocksOp(org, instrucao.substr(25));
+        //Verificar Hazard
         org.nI++;
     }
 
