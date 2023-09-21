@@ -51,30 +51,10 @@ void inserirNop(no* instrucao) {
 }
 
 
-double clocksOp(organizacao& org, string tipo) {
+double verificarRD(organizacao& org, string tipo) {
 
-    if (tipo == "0000011") { // Formato I load
-        return org.cIL;
-    }
-    else if (tipo == "0110011") { // Formato R
-        return org.cR;
-    }
-    else if (tipo == "0100011") { // Formato S
-        return org.cS;
-    }
-    else if (tipo == "0010011") { // Formato I aritimetica
-        return org.cIA;
-    }
-    else if (tipo == "1100011") { //Formato B
-        return org.cB;
-    }
-    else if (tipo == "1101111") { //Formato J
-        return org.cJ;
-    }
-    else if (tipo == "0110111") { // Formato U;
-        return org.cU;
-    }
-    return 0;
+    if (tipo == "0000011" || tipo == "0110011" || tipo == "0010011" || tipo == "1101111" || tipo == "0110111") {
+        return "a";
 }
 
 double verificarHazard(ifstream codigo) {
