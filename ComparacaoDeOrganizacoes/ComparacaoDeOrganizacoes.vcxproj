@@ -129,6 +129,11 @@
   <ItemGroup>
     <ClCompile Include="ComparacaoDeOrganizacoes.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComAdiantamento.h" />
+    <ClInclude Include="Lista.h" />
+    <ClInclude Include="SemAdiantamento.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
