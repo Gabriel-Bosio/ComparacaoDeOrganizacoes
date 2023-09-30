@@ -47,15 +47,41 @@ void inserirNOP(no* instrucao) {
     instrucao->anterior = novo;
 }
 
-void reordenar(no* inst1, no* inst2) {
-    no *tempA, *tempP;
+void reordenar(no* hazard, no* escolhido) {
 
-    tempA = inst1->anterior;
-    tempP = inst1->posterior;
+    escolhido->posterior->anterior = escolhido->anterior;
+    escolhido->anterior->posterior = escolhido->posterior;
 
-    inst1->anterior = inst2->anterior;
-    inst1->posterior = inst2->posterior;
+    escolhido->posterior = hazard->posterior;
+    escolhido->posterior->anterior = escolhido;
 
-    inst2->anterior = tempA;
-    inst2->posterior = tempP;
+    hazard->posterior = escolhido;
+    escolhido->anterior = hazard;
+}
+
+void salvarCodigo(lista& codigo, string nome_arquivo) {
+	no* instNo = codigo.inicio;
+
+    ofstream arquivo;
+
+	arquivo.open(nome_arquivo + ".txt");
+    arquivo.clear();
+
+    while (instNo != NULL) {
+        arquivo << instNo->instrucao;
+		instNo = instNo->posterior;
+    }
+
+    arquivo.close();
+}
+
+int contarInstrucao(lista& codigo) {
+	no* instNo = codigo.inicio;
+    int nI = 0;
+
+	while (instNo != NULL) {
+        nI++;
+		instNo = instNo->posterior;
+	}
+    return nI;
 }

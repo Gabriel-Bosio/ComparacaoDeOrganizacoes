@@ -7,13 +7,12 @@
 #include "ComAdiantamento.h"
 
 
-
-int inserirCodigo(lista &codigo, string txt) {
+int inserirCodigo(lista &codigo, string nome_arquivo) {
    inicializar(codigo);
 
    ifstream arquivo;
 
-   arquivo.open(txt + ".txt");
+   arquivo.open(nome_arquivo + ".txt");
 
    string instrucao;
    int nInstrucao = 0;
@@ -28,34 +27,34 @@ int inserirCodigo(lista &codigo, string txt) {
    return nInstrucao;
 }
 
-void inserirDados(double& tClock, string& arquivo) {
+void inserirDados(double& tClock, string& nome_arquivo) {
 
     cout << "\n\nDigite o tempo de clock em nanosegundos: ";
 	cin >> tClock;
 
 	cout << "\n\nDigite o nome do arquivo: ";
-	cin >> arquivo;
+	cin >> nome_arquivo;
 }
 
-void calcularEficiencias(lista codigo, int nI) {
+void calcularEficiencias(lista codigo, double tClock, string nome_arquivo) {
 
     //Chamar cálculos nas condições com e sem adiantamento
-    calcularSemAdiantamento(codigo, nI);
-    calcularComAdiantamento(codigo, nI);
+    calcularSemAdiantamento(codigo, tClock, nome_arquivo);
+    calcularComAdiantamento(codigo, tClock, nome_arquivo);
 }
 
 int main()
 {
 	double tClock;
-    string arquivo;
+    string nome_arquivo;
     lista codigo;
 
     cout << "||Digite as especificacoes||";
 
     //cout << "\n\n|Organizacao 1| ";
-    inserirDados(tClock, arquivo);
+    inserirDados(tClock, nome_arquivo);
 
-    inserirCodigo(codigo, arquivo);
+    inserirCodigo(codigo, nome_arquivo);
 
     //cin.ignore();
 
